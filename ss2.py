@@ -6,7 +6,7 @@ import time
 import math
 from adafruit_servokit import ServoKit
 kit=ServoKit(channels=16)
-delay = 1
+delay = 2
 kit.servo[0].set_pulse_width_range(500,2500)
 kit.servo[1].set_pulse_width_range(500,2500)
 kit.servo[2].set_pulse_width_range(500,2500)
