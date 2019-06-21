@@ -3,7 +3,7 @@ import time
 import math
 from adafruit_servokit import ServoKit
 kit=ServoKit(channels=16)
-delay = 0.4
+delay = 0.2
 
 
 
@@ -77,14 +77,16 @@ def getInverse(x1,y1,z):
 
 
 if __name__ == "__main__":
-
     
+     x=float(input("enter x coordinate: "))
+     y=float(input("enter y coordinate: "))
+     x=x/14
     
-
- 
-           
-    
-              #initialize
+     print("NO OF STEPS IS: " + str(x))
+     counter_x=0
+     counter_y=0
+     i=1  
+                  #initialize
      TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
      kit.servo[0].angle=TH1+100                                          
      kit.servo[1].angle=TH02+100
@@ -94,65 +96,69 @@ if __name__ == "__main__":
      kit.servo[4].angle=TH1+100                                          
      kit.servo[5].angle=TH02+100
      kit.servo[6].angle=TH03+100
-#        
-     TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
+    #        
+     TH1,TH02,TH03=getInverse(9.404,9.40,-17.2)
      kit.servo[8].angle=TH1+90                                          
      kit.servo[9].angle=TH02+90
      kit.servo[10].angle=TH03+90
+    
        
      TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
      kit.servo[12].angle=TH1+90                                          
      kit.servo[13].angle=TH02+90
      kit.servo[14].angle=TH03+90
-     time.sleep(2)
-     while(1): 
-          # first leg
-        
-         TH1,TH02,TH03=getInverse(9.404,14.40,-12.2)
-         kit.servo[0].angle=TH1+100                                          
-         kit.servo[1].angle=TH02+100
-         kit.servo[2].angle=TH03+100
-         time.sleep(delay)
+     time.sleep(4)
+       
+     kit.servo[13].angle=110
+     time.sleep(delay)
+     kit.servo[1].angle=65
+     time.sleep(delay) 
+     
+     #firstleg
+     TH1,TH02,TH03=getInverse(9.404,14.40,-12.2)
+     kit.servo[0].angle=TH1+100                                          
+     kit.servo[1].angle=TH02+100
+     kit.servo[2].angle=TH03+100
+     time.sleep(delay)
     # #         
-         TH1,TH02,TH03=getInverse(-4.404,17.40,-12.2)
-         kit.servo[0].angle=TH1+100                                          
-         kit.servo[1].angle=TH02+100
-         kit.servo[2].angle=TH03+100
-         time.sleep(delay)
+     TH1,TH02,TH03=getInverse(-4.404,17.40,-12.2)
+     kit.servo[0].angle=TH1+100                                          
+     kit.servo[1].angle=TH02+100
+     kit.servo[2].angle=TH03+100
+     time.sleep(delay)
     # #         
-         TH1,TH02,TH03=getInverse(-4.404,9.40,-16.2)
-         kit.servo[0].angle=TH1+100                                          
-         kit.servo[1].angle=TH02+100
-         kit.servo[2].angle=TH03+100
-         time.sleep(delay)
-    # #         
-    # # 
+     TH1,TH02,TH03=getInverse(-4.404,9.40,-16.2)
+     kit.servo[0].angle=TH1+100                                          
+     kit.servo[1].angle=TH02+100
+     kit.servo[2].angle=TH03+100
+     time.sleep(delay)
+
     # #         # second leg
-         TH1,TH02,TH03=getInverse(9.404,14.40,-12.2)
-         kit.servo[4].angle=TH1+100                                          
-         kit.servo[5].angle=TH02+100
-         kit.servo[6].angle=TH03+100
-         time.sleep(delay)
+     TH1,TH02,TH03=getInverse(9.404,14.40,-12.2)
+     kit.servo[4].angle=TH1+100                                          
+     kit.servo[5].angle=TH02+100
+     kit.servo[6].angle=TH03+100
+     time.sleep(delay)
     # #         
-         TH1,TH02,TH03=getInverse(17.404,-2.40,-12.2)
-         kit.servo[4].angle=TH1+100                                          
-         kit.servo[5].angle=TH02+100
-         kit.servo[6].angle=TH03+100
-         time.sleep(delay)
+     TH1,TH02,TH03=getInverse(17.404,-2.40,-12.2)
+     kit.servo[4].angle=TH1+100                                          
+     kit.servo[5].angle=TH02+100
+     kit.servo[6].angle=TH03+100
+     time.sleep(delay)
     # #         
-         TH1,TH02,TH03=getInverse(9.404,-2.40,-16.2)
-        
-         print(TH1+100)
-         print(TH02+100)
-         print(TH03+100)
+     TH1,TH02,TH03=getInverse(9.404,-2.40,-16.2)
+    
+     print(TH1+100)
+     print(TH02+100)
+     print(TH03+100)
+     
+     kit.servo[4].angle=TH1+100                                          
+     kit.servo[5].angle=TH02+100
+     kit.servo[6].angle=TH03+100
+     time.sleep(delay)
          
-         kit.servo[4].angle=TH1+100                                          
-         kit.servo[5].angle=TH02+100
-         kit.servo[6].angle=TH03+100
-         time.sleep(delay)
-         
-         
-         # first leg extend
+     while(i<=x):
+             # first leg extend
          TH1,TH02,TH03=getInverse(-4.404,20.40,-9.404)
       
          print("case 7")
@@ -200,7 +206,7 @@ if __name__ == "__main__":
          
          #leg 2
          TH1,TH02,TH03=getInverse(9.404,-2.40,-16.2)
-         print("case 123")
+         print("case 275255828")
          print(TH1+150)
          print(TH02+100)
          print(TH03+100)
@@ -211,7 +217,7 @@ if __name__ == "__main__":
          
          #leg 3
          TH1,TH02,TH03=getInverse(9.404,9.40,-18.2)
-         
+         print("case 6")
          print(TH1+50)
          print(TH02+90)
          print(TH03+90)
@@ -222,7 +228,10 @@ if __name__ == "__main__":
          #leg 4
          TH1,TH02,TH03=getInverse(5.404,5.40,-16.2)
          
-         
+         print("case 1")
+         print(TH1+90)
+         print(TH02+90)
+         print(TH03+140)
          
          kit.servo[12].angle=TH1+90                                          
          kit.servo[13].angle=TH02+90
@@ -231,18 +240,6 @@ if __name__ == "__main__":
         
          
          #third leg (mirror of first leg)
-         
-                  
-         #leg 3
-         TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
-         print("case 6")
-         print(TH1+50)
-         print(TH02+90)
-         print(TH03+90)
-         kit.servo[8].angle=TH1+50                                          
-         kit.servo[9].angle=TH02+90
-         kit.servo[10].angle=TH03+90
-         
          TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
          kit.servo[8].angle=TH1+90                                          
          kit.servo[9].angle=TH02+90
@@ -253,43 +250,17 @@ if __name__ == "__main__":
          kit.servo[9].angle=TH02+90
          kit.servo[10].angle=TH03+90
          
+         kit.servo[9].angle=80
+         kit.servo[5].angle=125
+         time.sleep(delay)
          
-         
-          
-                        # leg 1   correction
-         TH1,TH02,TH03=getInverse(10.404,10.409,-14.2)
-         print("case 1")
-         print(TH1+100)
-         print(TH02+100)
-         print(TH03+100)
-         kit.servo[0].angle=TH1+100                                          
-         kit.servo[1].angle=TH02+100
-         kit.servo[2].angle=TH03+100
-         time.sleep(0.2)    
-          
-          # third leg(mirror of second leg INSIDE)
+    # third leg(mirror of second leg INSIDE)
           
          TH1,TH02,TH03=getInverse(16.404,9.40,-12.2)
          
          kit.servo[8].angle=TH1+90                                          
          kit.servo[9].angle=TH02+90
          kit.servo[10].angle=TH03+90
-         
-   
-         
-          
-         #leg 2 correction
-         TH1,TH02,TH03=getInverse(9.404,-2.40,-17.2)
-         print("case 123")
-         print(TH1+150)
-         print(TH02+100)
-         print(TH03+100)
-         
-         kit.servo[4].angle=TH1+150                                          
-         kit.servo[5].angle=TH02+100
-         kit.servo[6].angle=TH03+100
-         
-         
          time.sleep(delay)
     # #         
          TH1,TH02,TH03=getInverse(20.404,-0.40,-12.2)
@@ -299,34 +270,17 @@ if __name__ == "__main__":
          kit.servo[10].angle=TH03+90
          time.sleep(delay)
     # #         
-         TH1,TH02,TH03=getInverse(13.404,-0.40,-17.2)
+         TH1,TH02,TH03=getInverse(16.404,0.404,-17.2)
          kit.servo[8].angle=TH1+90                                          
          kit.servo[9].angle=TH02+90
          kit.servo[10].angle=TH03+90
-         
-              #leg 2 correction
-         TH1,TH02,TH03=getInverse(9.404,-2.40,-16.2)
-         print("case 123")
-         print(TH1+150)
-         print(TH02+100)
-         print(TH03+100)
-         
-         kit.servo[4].angle=TH1+150                                          
-         kit.servo[5].angle=TH02+100
-         kit.servo[6].angle=TH03+100
-         
-         
          time.sleep(delay)
-    # #         
-    # # 
-    # #         # fourth leg(mirror of second leg INSIDE)
+         
+         kit.servo[5].angle=97       
+    # #  
+
+    # #  # fourth leg(mirror of second leg INSIDE)
          TH1,TH02,TH03=getInverse(16.404,9.40,-12.2)
-    # =============================================================================
-    #      print(TH1)
-    #      print(TH02)
-    #      print(TH03)
-    # =============================================================================
-       
          kit.servo[12].angle=TH1+90                                          
          kit.servo[13].angle=TH02+90
          kit.servo[14].angle=TH03+90
@@ -350,22 +304,17 @@ if __name__ == "__main__":
          kit.servo[12].angle=TH1+90                                          
          kit.servo[13].angle=TH02+90
          kit.servo[14].angle=TH03+90
-         time.sleep(delay)
-         
-         
+         time.sleep(delay) 
          
           # third leg extend(mirror of first leg)
          TH1,TH02,TH03=getInverse(20.45,0.40,-12.404)
-      
-        
          print(TH1+90)
          print(TH02+90)
          print(TH03+90)
          kit.servo[8].angle=TH1+90                                          
          kit.servo[9].angle=TH02+90
          kit.servo[10].angle=TH03+90
-         
-                 
+         time.sleep(delay)            
          TH1,TH02,TH03=getInverse(20.404,9.404,-9.404)
          print("case 4")
          print(TH1+90)
@@ -376,10 +325,8 @@ if __name__ == "__main__":
          kit.servo[10].angle=TH03+90
          time.sleep(delay)
               
-              
-         TH1,TH02,TH03=getInverse(5.404,20.404,-16.2)
+         TH1,TH02,TH03=getInverse(11.404,14.404,-16.2)
          print("case 5")
-     
          print(TH1+90)
          print(TH02+90)
          print(TH03+90)
@@ -387,9 +334,8 @@ if __name__ == "__main__":
          kit.servo[9].angle=TH02+90
          kit.servo[10].angle=TH03+90
          time.sleep(delay)
-    #      
-         
-           #pushgfhhgjgjughjghjghjgh
+          
+         #pushgfhhgjgjughjghjghjgh
           
                 # leg 3   
          TH1,TH02,TH03=getInverse(9.404,9.404,-18.2)
@@ -422,52 +368,34 @@ if __name__ == "__main__":
           
           #leg 2
          TH1,TH02,TH03=getInverse(7.404,7.40,-14.2)
-         
-     
-          
          kit.servo[4].angle=TH1+90                                          
          kit.servo[5].angle=TH02+90
          kit.servo[6].angle=TH03+140
          #time.sleep(delay)
          
-   
+         #jkdsngjk
+         
+         TH1,TH02,TH03=getInverse(9.404,14.40,-12.2)
+         kit.servo[4].angle=TH1+100                                          
+         kit.servo[5].angle=TH02+100
+         kit.servo[6].angle=TH03+100
+         time.sleep(delay)
+    # #         
+         TH1,TH02,TH03=getInverse(17.404,-2.40,-12.2)
+         kit.servo[4].angle=TH1+100                                          
+         kit.servo[5].angle=TH02+100
+         kit.servo[6].angle=TH03+100
+         time.sleep(delay)
+    # #         
+         TH1,TH02,TH03=getInverse(9.404,-2.40,-16.2)
         
-# =============================================================================
-#          
-#          #right turn 
-#          TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
-#          kit.servo[0].angle=TH1+100                                          
-#          kit.servo[1].angle=TH02+100
-#          kit.servo[2].angle=TH03+100
-#                  
-#          TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
-#          kit.servo[4].angle=TH1+100                                          
-#          kit.servo[5].angle=TH02+100
-#          kit.servo[6].angle=TH03+100
-#         #        
-#          TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
-#          kit.servo[8].angle=TH1+90                                          
-#          kit.servo[9].angle=TH02+90
-#          kit.servo[10].angle=TH03+90
-#        
-#          TH1,TH02,TH03=getInverse(9.404,9.40,-16.2)
-#          kit.servo[12].angle=TH1+90                                          
-#          kit.servo[13].angle=TH02+90
-#          kit.servo[14].angle=TH03+90
-#          time.sleep(2)
-#      
-# =============================================================================
-
-# =============================================================================
-#          # right
-#          TH1,TH02,TH03=getInverse(9.404,2.40,-12.2)
-#          print("case 678")
-#          print(TH1+100)
-#          print(TH02+100)
-#          print(TH03+100)
-#          
-#          kit.servo[0].angle=TH1+100                                          
-#          kit.servo[1].angle=TH02+100
-#          kit.servo[2].angle=TH03+100
-# 
-# =============================================================================
+         print(TH1+100)
+         print(TH02+100)
+         print(TH03+100)
+         
+         kit.servo[4].angle=TH1+100                                          
+         kit.servo[5].angle=TH02+100
+         kit.servo[6].angle=TH03+100
+         time.sleep(delay)         
+             
+         i=i+1
